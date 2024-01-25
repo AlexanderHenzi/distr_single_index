@@ -2,7 +2,7 @@
 
 This repository contains code and replication material for the preprint
 
-Fadoua Balabdaoui, Alexander Henzi, and Lukas Looser. "Estimation and convergence rates in the distributional single index model" (2023).
+Fadoua Balabdaoui, Alexander Henzi, and Lukas Looser. "Estimation and convergence rates in the distributional single index model" (2023). arXiv:2310.13973
 
 Functions implementing our methods are in `functions`, and data for replicating the simulations and the case study are in `data`.
 
