@@ -96,6 +96,7 @@ msim_df_points <- data.frame(
 )
 
 save(list = ls(), file = "house_price_application_tmp.rda")
+load("data/house_price_application_tmp.rda")
 
 ## code the fit as quantile with tau = 0.5 (for simplifying the plotting; the
 ## curve is an estimate of the conditional mean and not of the median!)
@@ -107,7 +108,7 @@ msim_df_mean <- data.frame(
 )
 
 # get data for quantile model
-quantile_data <- readRDS("single_index_quantile_data.rds")
+quantile_data <- readRDS("data/single_index_quantile_data.rds")
 quantile_df_points <- data.frame(
   index = quantile_data[, 7],
   price = quantile_data[, 6] + mean(y),
@@ -140,11 +141,11 @@ quantiles_plot <- ggplot() +
     aes(x = index, y = price)
   ) + 
   geom_line(
-    data = quants_df,
+    data = filter(quants_df, tau %in% c(0.1, 0.5, 0.9)),
     aes(x = index, y = quantile, color = tau, group = tau),
     lwd = 0.9
   ) +
-  scale_color_manual(values = colpal[1:5]) +
+  scale_color_manual(values = colpal[c(2, 3, 4)]) +
   facet_wrap(.~method, scales = "free_x") +
   theme(legend.position = "none") +
   labs(x = "Index", y = "Price")
